@@ -27,8 +27,8 @@ WORKDIR /app
 # Copy package files for production
 COPY package*.json ./
 
-# Install only production dependencies including express
-RUN npm install express --legacy-peer-deps
+# Install only production dependencies including express and proxy
+RUN npm install express http-proxy-middleware --legacy-peer-deps
 
 # Copy built files from builder
 COPY --from=builder /app/dist ./dist
